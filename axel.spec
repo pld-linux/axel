@@ -36,7 +36,9 @@ wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 	--locale=%{_datadir}/locale \
 	--i18n=1
 
-%{__make} CC=%{__cc} CFLAGS="%{rpmcflags}"
+%{__make} \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
