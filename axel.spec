@@ -1,7 +1,7 @@
 Summary:	An light Linux download accelerator	
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
-Version:	0.96
+Version:	0.97
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
@@ -10,6 +10,7 @@ Group(es):	Red/Utilitarios
 Group(pl):	Sieciowe/Narzêdzia
 Group(pt_BR):	Rede/Utilitários
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
+Patch0:		axel-opt.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -24,11 +25,12 @@ wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 
 %prep
 %setup  -q 
+%patch -p1
 
 %build
-%{__make} CFLAGS="%{rpmcflags}"
+%{__make} RPMCFLAGS="%{rpmcflags}" ETCDIR="/etc"
 
-gzip -9nf TODO CHANGES README
+gzip -9nf CHANGES README
 
 %install
 rm -rf $RPM_BUILD_ROOT
