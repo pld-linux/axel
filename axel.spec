@@ -7,6 +7,7 @@ License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Makefile.patch
+URL:		http://www.lintux.cx/axel.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
