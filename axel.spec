@@ -1,7 +1,7 @@
 Summary:	An light Linux download accelerator	
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
-Version:	0.99a
+Version:	1.0a
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
@@ -25,25 +25,33 @@ wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 
 %prep
 %setup  -q 
-%patch -p1
 
 %build
-%{__make} CC="%{__cc}" CFLAGS="%{rpmcflags} -D_REENTRANT -DETCDIR=\\\"/etc\\\""
+# it doesn't use autoconf
+./configure \
+	--prefix=%{_prefix} \
+	--bindir=%{_bindir} \
+	--etcdir=%{_sysconfdir} \
+	--mandir=%{_mandir} \
+	--locale=%{_datadir}/locale \
+	--i18n=1
 
-gzip -9nf CHANGES README
+%{__make} CC=%{__cc} CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
 
-install axel $RPM_BUILD_ROOT%{_bindir}
-install axel.1 $RPM_BUILD_ROOT%{_mandir}/man1
-install axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir},%{_datadir}/locale}
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%find_lang %{name}
+
+gzip -9nf CHANGES README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc *.gz
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
