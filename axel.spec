@@ -1,6 +1,6 @@
 Summary:	An light Linux download accelerator	
 Name:		axel
-Version:	0.91
+Version:	0.92
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
