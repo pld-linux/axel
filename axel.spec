@@ -1,4 +1,4 @@
-Summary:	IP Flow Meter is a bandwidth analysis tool
+Summary:	An light Linux download accelerator	
 Name:		axel
 Version:	0.91
 Release:	1
