@@ -2,11 +2,12 @@ Summary:	An light Linux download accelerator
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
 Version:	1.0a
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Makefile.patch
+Patch1:		%{name}-home_etc.patch
 URL:		http://www.lintux.cx/axel.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -22,6 +23,7 @@ wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 
 %prep
 %setup  -q
+%patch1 -p1
 
 %build
 # it doesn't use autoconf
