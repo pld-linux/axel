@@ -1,0 +1,31 @@
+--- axel-0.98/Makefile.orig	Sat Nov  3 19:28:39 2001
++++ axel-0.98/Makefile	Tue Nov  6 11:32:21 2001
+@@ -12,6 +12,8 @@
+ 
+ include Makefile.settings
+ 
++CC=gcc
++
+ ifdef DEBUG
+ CFLAGS = -DDEBUG -g
+ else
+@@ -60,17 +62,10 @@
+ ### MAIN PROGRAM
+ 
+ axel: axel.o conf.o conn.o ftp.o http.o search.o tcp.o text.o
+-	gcc axel.o conf.o conn.o ftp.o http.o search.o tcp.o text.o -o axel $(LFLAGS)
+-ifndef DEBUG
+-ifeq ($(HOSTTYPE),Darwin)
+-	strip axel
+-else
+-	strip -R .comment -R .note -s axel
+-endif
+-endif
++	$(CC) axel.o conf.o conn.o ftp.o http.o search.o tcp.o text.o -o axel $(LFLAGS)
+ 
+ .c.o:
+-	gcc -c $*.c -o $*.o -Wall $(CFLAGS)
++	$(CC) -c $*.c -o $*.o -Wall $(CFLAGS)
+ 
+ install-bin:
+ 	mkdir -p $(DESTDIR)$(BINDIR)/
