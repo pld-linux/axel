@@ -2,7 +2,7 @@ Summary:	An light Linux download accelerator
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
 Version:	1.0a
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
@@ -42,14 +42,12 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir},%{_datadir}/loca
 
 %find_lang %{name}
 
-gzip -9nf CHANGES README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz
+%doc CHANGES README
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
