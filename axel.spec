@@ -6,7 +6,9 @@ Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Group(de):	Netzwerkwesen/Werkzeuge
+Group(es):	Red/Utilitarios
 Group(pl):	Sieciowe/Narzêdzia
+Group(pt_BR):	Rede/Utilitários
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,11 +32,11 @@ gzip -9nf TODO CHANGES README
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
 
-%{__install} axel $RPM_BUILD_ROOT%{_bindir}
-%{__install} axel.1 $RPM_BUILD_ROOT%{_mandir}/man1
-%{__install} axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
+install axel $RPM_BUILD_ROOT%{_bindir}
+install axel.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
