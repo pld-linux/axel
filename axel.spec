@@ -1,4 +1,5 @@
 Summary:	An light Linux download accelerator	
+Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
 Version:	0.94
 Release:	1
@@ -13,6 +14,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This program downloads a file from a FTP/HTTP through multiple
 connections, managed by one single thread, storing all the data to one
 file. This is because I think it's more efficient.
+
+%description -l pl
+Ten program ¶ci±ga pliki przez FTP/HTTP korzystaj±c w wielu
+równoczesnych po³±czeñ, zarz±dzanych przez pojedynczy w±tek, zapisuj±c
+wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 
 %prep
 %setup  -q 
