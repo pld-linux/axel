@@ -1,4 +1,4 @@
-Summary:	An light Linux download accelerator	
+Summary:	An light Linux download accelerator
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
 Version:	1.0a
@@ -20,7 +20,7 @@ równoczesnych po³±czeñ, zarz±dzanych przez pojedynczy w±tek, zapisuj±c
 wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 
 %prep
-%setup  -q 
+%setup  -q
 
 %build
 # it doesn't use autoconf
