@@ -18,17 +18,17 @@ file. This is because I think it's more efficient.
 %setup  -q 
 
 %build
-%{__make}
+%{__make} CFLAGS="%{rpmcflags}"
 
 gzip -9nf TODO CHANGES README
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
+%{__install} -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,%{_sysconfdir}}
 
-install axel	$RPM_BUILD_ROOT%{_bindir}
-install axel.1	$RPM_BUILD_ROOT%{_mandir}/man1
-install axelrc.example	$RPM_BUILD_ROOT%{_sysconfdir}/axelrc
+%{__install} axel $RPM_BUILD_ROOT%{_bindir}
+%{__install} axel.1 $RPM_BUILD_ROOT%{_mandir}/man1
+%{__install} axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
