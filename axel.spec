@@ -10,7 +10,7 @@ Group(es):	Red/Utilitarios
 Group(pl):	Sieciowe/Narzêdzia
 Group(pt_BR):	Rede/Utilitários
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
-Patch0:		axel-opt.patch
+Patch0:		%{name}-opt.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,7 +28,7 @@ wszystkie dane w jednym pliku. Dlatego powinien byæ bardzo efektywny.
 %patch -p1
 
 %build
-%{__make} RPMCFLAGS="%{rpmcflags}" ETCDIR="/etc"
+%{__make} RPMCFLAGS="%{rpmcflags}" ETCDIR="%{_sysconfdir}"
 
 gzip -9nf CHANGES README
 
