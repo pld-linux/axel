@@ -38,4 +38,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
 %attr(755,root,root) %{_bindir}/*
-%{_mandir}/*
+%{_mandir}/man1/*
