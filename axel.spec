@@ -5,11 +5,11 @@ Version:	1.0a
 Release:	4
 License:	GPL
 Group:		Networking/Utilities
-Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
+Source0:	http://wilmer.gaast.net/downloads/%{name}-%{version}.tar.gz
 # Source0-md5:	2d94c0b36b374834567f1fcec5f89119
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-etc_dir.patch
-URL:		http://www.lintux.cx/axel.html
+URL:		http://wilmer.gaast.net/main.php/axel.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
