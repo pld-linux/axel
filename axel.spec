@@ -2,7 +2,7 @@ Summary:	A light Linux download accelerator
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
 Version:	1.0a
-Release:	3
+Release:	4
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.lintux.cx/downloads/%{name}-%{version}.tar.gz
