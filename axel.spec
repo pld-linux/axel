@@ -1,7 +1,7 @@
 Summary:	An light Linux download accelerator	
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
-Version:	0.95
+Version:	0.96
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
