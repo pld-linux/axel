@@ -1,12 +1,12 @@
 Summary:	A light Linux download accelerator
 Summary(pl):	Niewielki dopalacz ¶ci±gania plików
 Name:		axel
-Version:	1.0a
-Release:	4
+Version:	1.0b
+Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://wilmer.gaast.net/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	2d94c0b36b374834567f1fcec5f89119
+# Source0-md5:	679da19b47570f7ddff1e7958d5df97f
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-etc_dir.patch
 URL:		http://wilmer.gaast.net/main.php/axel.html
