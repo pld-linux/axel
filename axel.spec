@@ -10,6 +10,7 @@ Source0:	http://wilmer.gaast.net/downloads/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-etc_dir.patch
 URL:		http://wilmer.gaast.net/main.php/axel.html
+BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
