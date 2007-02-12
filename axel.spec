@@ -1,5 +1,5 @@
 Summary:	A light Linux download accelerator
-Summary(pl.UTF-8):   Niewielki dopalacz ściągania plików
+Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
 Version:	1.0b
 Release:	2
