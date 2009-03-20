@@ -1,15 +1,15 @@
 Summary:	A light Linux download accelerator
 Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
-Version:	1.0b
-Release:	2
+Version:	2.3
+Release:	1
 License:	GPL
 Group:		Networking/Utilities
-Source0:	http://wilmer.gaast.net/downloads/%{name}-%{version}.tar.gz
-# Source0-md5:	679da19b47570f7ddff1e7958d5df97f
+Source0:	http://alioth.debian.org/frs/download.php/2717/axel-2.3.tar.gz
+# Source0-md5:	6f49813ffc1dd10829d74b73712cb5ed
 Patch0:		%{name}-Makefile.patch
 Patch1:		%{name}-etc_dir.patch
-URL:		http://wilmer.gaast.net/main.php/axel.html
+URL:		http://axel.alioth.debian.org/
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -59,3 +59,4 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
+%lang(zh_CN) %{_mandir}/zh_CN/man1/*
