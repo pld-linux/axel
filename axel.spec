@@ -7,8 +7,7 @@ License:	GPL
 Group:		Networking/Utilities
 Source0:	http://alioth.debian.org/frs/download.php/2717/%{name}-%{version}.tar.gz
 # Source0-md5:	6f49813ffc1dd10829d74b73712cb5ed
-Patch0:		%{name}-Makefile.patch
-Patch1:		%{name}-etc_dir.patch
+Patch0:		%{name}-etc_dir.patch
 URL:		http://axel.alioth.debian.org/
 BuildRequires:	gettext-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -25,7 +24,7 @@ wszystkie dane w jednym pliku. Dlatego powinien być bardzo efektywny.
 
 %prep
 %setup  -q
-%patch1 -p1
+%patch0 -p1
 
 %build
 # it doesn't use autoconf
