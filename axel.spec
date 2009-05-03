@@ -2,7 +2,7 @@ Summary:	A light Linux download accelerator
 Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
 Version:	2.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://alioth.debian.org/frs/download.php/2717/%{name}-%{version}.tar.gz
@@ -46,6 +46,8 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir},%{_datadir}/loca
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+	
+mv $RPM_BUILD_ROOT/usr/share/locale/zh_{cn,CN}
 
 %find_lang %{name}
 
