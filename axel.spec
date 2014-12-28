@@ -9,7 +9,7 @@ Source0:	http://alioth.debian.org/frs/download.php/2717/%{name}-%{version}.tar.g
 # Source0-md5:	6f49813ffc1dd10829d74b73712cb5ed
 Patch0:		%{name}-etc_dir.patch
 URL:		http://axel.alioth.debian.org/
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
