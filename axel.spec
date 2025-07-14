@@ -24,7 +24,7 @@ wszystkie dane w jednym pliku. Dlatego powinien być bardzo efektywny.
 
 %prep
 %setup  -q
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # it doesn't use autoconf
