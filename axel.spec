@@ -1,8 +1,9 @@
+%undefine	_debugsource_packages
 Summary:	A light Linux download accelerator
 Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
 Version:	2.3
-Release:	3
+Release:	4
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://alioth.debian.org/frs/download.php/2717/%{name}-%{version}.tar.gz
