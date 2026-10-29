@@ -1,16 +1,22 @@
-%undefine	_debugsource_packages
 Summary:	A light Linux download accelerator
 Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
-Version:	2.3
-Release:	4
-License:	GPL
+Version:	2.17.14
+Release:	1
+License:	GPL v2+ with OpenSSL exception
 Group:		Networking/Utilities
-Source0:	http://alioth.debian.org/frs/download.php/2717/%{name}-%{version}.tar.gz
-# Source0-md5:	6f49813ffc1dd10829d74b73712cb5ed
+Source0:	https://github.com/axel-download-accelerator/axel/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# Source0-md5:	2d12aab3b617197c272f9172f300663d
 Patch0:		%{name}-etc_dir.patch
-URL:		http://axel.alioth.debian.org/
+Patch1:		%{name}-http-header-bound.patch
+Patch2:		%{name}-redirect-credentials.patch
+Patch3:		%{name}-CVE-2026-118485.patch
+URL:		https://github.com/axel-download-accelerator/axel
 BuildRequires:	gettext-tools
+BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,29 +32,24 @@ wszystkie dane w jednym pliku. Dlatego powinien być bardzo efektywny.
 %prep
 %setup  -q
 %patch -P0 -p1
+%patch -P1 -p1
+%patch -P2 -p1
+%patch -P3 -p1
 
 %build
-# it doesn't use autoconf
-./configure \
-	--prefix=%{_prefix} \
-	--bindir=%{_bindir} \
-	--etcdir=%{_sysconfdir} \
-	--mandir=%{_mandir} \
-	--locale=%{_datadir}/locale \
-	--i18n=1
+%configure \
+	--with-ssl=openssl
 
-%{__make} \
-	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir},%{_mandir},%{_datadir}/locale}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-	
-mv $RPM_BUILD_ROOT/usr/share/locale/zh_{cn,CN}
+
+cp -p doc/axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
 
 %find_lang %{name}
 
@@ -57,8 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc CHANGES README
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
-%lang(zh_CN) %{_mandir}/zh_CN/man1/*
+%doc ChangeLog NEWS README.md
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/axelrc
+%attr(755,root,root) %{_bindir}/axel
+%{_mandir}/man1/axel.1*

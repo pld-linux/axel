@@ -1,17 +1,25 @@
-diff -Nru axel-1.0a/conf.c axel-1.0a.new/conf.c
---- axel-1.0a/conf.c	Tue Feb 19 18:10:37 2002
-+++ axel-1.0a.new/conf.c	Sun Mar 23 14:26:22 2003
-@@ -148,6 +148,13 @@
- 	if( !conf_loadfile( conf, ETCDIR "/axelrc" ) )
- 		return( 0 );
- 	
-+	if( ( s2 = getenv( "ETC_DIR" ) ) != NULL )
-+	{
-+		sprintf( s, "%s/%s", s2, "axelrc" );
-+		if( !conf_loadfile( conf, s ) )
-+			return( 0 );
-+	}
-+	else
- 	if( ( s2 = getenv( "HOME" ) ) != NULL )
- 	{
- 		sprintf( s, "%s/%s", s2, ".axelrc" );
+Read $ETC_DIR/axelrc instead of ~/.axelrc when ETC_DIR is set (PLD
+per-user config dir convention).
+--- axel-2.17.14.orig/src/conf.c
++++ axel-2.17.14/src/conf.c
+@@ -294,7 +294,19 @@
+ 	if (!conf_loadfile(conf, ETCDIR "/axelrc"))
+ 		return 0;
+ 
+-	if ((s2 = getenv("HOME")) != NULL) {
++	if ((s2 = getenv("ETC_DIR")) != NULL) {
++		char s[MAX_STRING];
++		int ret;
++
++		ret = snprintf(s, sizeof(s), "%s/axelrc", s2);
++		if (ret >= (int)sizeof(s)) {
++			fprintf(stderr, _("ETC_DIR env variable too long\n") );
++			return 0;
++		}
++
++		if (!conf_loadfile(conf, s))
++			return 0;
++	} else if ((s2 = getenv("HOME")) != NULL) {
+ 		char s[MAX_STRING];
+ 		int ret;
+ 
