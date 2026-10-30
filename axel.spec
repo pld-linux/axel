@@ -2,7 +2,7 @@ Summary:	A light Linux download accelerator
 Summary(pl.UTF-8):	Niewielki dopalacz ściągania plików
 Name:		axel
 Version:	2.17.14
-Release:	1
+Release:	2
 License:	GPL v2+ with OpenSSL exception
 Group:		Networking/Utilities
 Source0:	https://github.com/axel-download-accelerator/axel/releases/download/v%{version}/%{name}-%{version}.tar.xz
@@ -50,6 +50,8 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 cp -p doc/axelrc.example $RPM_BUILD_ROOT%{_sysconfdir}/axelrc
+
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/id{_ID,}
 
 %find_lang %{name}
 
